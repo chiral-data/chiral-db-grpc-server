@@ -23,7 +23,7 @@ RUN adduser \
 # COPY ./chiral-db-grpc/ .
 RUN git clone https://github.com/chiral-data/chiral-db-grpc.git
 WORKDIR /chiral-db-grpc
-RUN git checkout dev
+RUN git checkout f-docker
 RUN cargo build --release 
 
 # Server Image
