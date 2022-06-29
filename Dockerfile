@@ -37,6 +37,7 @@ COPY --from=builder /chiral-db-grpc/target/release/chiral-db-server ./
 COPY ./data/chembl_28_chemreps_9999.txt ./
 USER chiraldb:chiraldb
 
+
 # ENV CHRLDB_CHEMBL_TXTFILE='chembl_30_chemreps_10k.txt'
 ENV CHRLDB_CHEMBL_TXTFILE='chembl_30_chemreps_9999.txt'
 CMD ["/chiral-db-grpc/chiral-db-server"]
