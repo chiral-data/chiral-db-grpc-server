@@ -1,3 +1,4 @@
 [submodule "chiral-db-grpc"]
 	path = chiral-db-grpc
 	url = https://github.com/chiral-data/chiral-db-grpc.git
+	branch = dev
