@@ -20,9 +20,11 @@ RUN adduser \
     "${USER}"
 
 
-WORKDIR /chiral-db-grpc
+# COPY ./chiral-db-grpc/ .
+RUN git clone https://github.com/chiral-data/chiral-db-grpc.git
+RUN git checkout dev
 
-COPY ./chiral-db-grpc/ .
+WORKDIR /chiral-db-grpc
 
 RUN cargo build --release 
 
