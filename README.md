@@ -1,2 +1,2 @@
 # chiral-db-grpc-server
-ChiralDB gRPC Server
+Docker Image for ChiralDB gRPC Server
