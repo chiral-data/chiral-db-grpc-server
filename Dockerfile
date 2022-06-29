@@ -22,10 +22,8 @@ RUN adduser \
 
 # COPY ./chiral-db-grpc/ .
 RUN git clone https://github.com/chiral-data/chiral-db-grpc.git
-RUN git checkout dev
-
 WORKDIR /chiral-db-grpc
-
+RUN git checkout dev
 RUN cargo build --release 
 
 # Server Image
@@ -35,11 +33,9 @@ COPY --from=builder /etc/group /etc/group
 
 WORKDIR /chiral-db-grpc
 COPY --from=builder /chiral-db-grpc/target/release/chiral-db-server ./
-# COPY ./data/chembl_30_chemreps_10k.txt ./
-COPY ./data/chembl_28_chemreps_9999.txt ./
+COPY ./data/chembl_30_chemreps_10k.txt ./
 USER chiraldb:chiraldb
 
 
-# ENV CHRLDB_CHEMBL_TXTFILE='chembl_30_chemreps_10k.txt'
-ENV CHRLDB_CHEMBL_TXTFILE='chembl_30_chemreps_9999.txt'
+ENV CHRLDB_CHEMBL_TXTFILE='chembl_30_chemreps_10k.txt'
 CMD ["/chiral-db-grpc/chiral-db-server"]
